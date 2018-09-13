@@ -4,3 +4,6 @@ examples/get_current_orders/package-lock.json
 examples/get_current_orders/node_modules
 
 .env
+/.DS_Store
+/.project
+/.settings/

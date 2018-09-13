@@ -1,0 +1,7 @@
+{
+    "groupId" : "io.stockx",
+    "artifactId" : "stockx-client",
+    "modelPackage" : "io.stockx.client.model",
+    "apiPackage" : "io.stockx.client.api",
+    "library" : "okhttp-gson"
+}

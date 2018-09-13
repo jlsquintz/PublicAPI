@@ -1,0 +1,6 @@
+{
+    "modelPackage" : "StockX",
+    "apiPackage" : "StockX",
+    "invokerPackage" : "StockX\Client",
+    "packagePath" : "StockXClient"
+}
