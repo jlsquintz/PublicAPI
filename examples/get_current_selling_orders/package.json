@@ -1,0 +1,14 @@
+{
+  "name": "get_current_selling_orders",
+  "version": "1.0.0",
+  "description": "Example of getting user's current selling orders on StockX.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "superagent": "^3.8.3"
+  }
+}
