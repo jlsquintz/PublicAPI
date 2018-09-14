@@ -1,4 +1,4 @@
-package io.stockx.sdk.examples;
+package io.stockx.sdk.examples.endpoints;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import io.stockx.client.ApiResponse;
 import io.stockx.client.api.StockXApi;
 import io.stockx.client.model.LoginRequest;
 import io.stockx.client.model.LoginResponse;
-import io.stockx.client.model.ProductLookupResponse;
+import io.stockx.client.model.ProductInfo;
 import io.stockx.sdk.examples.base.Environment;
 import io.stockx.sdk.examples.base.ExampleConstants;
 import io.stockx.sdk.examples.base.StockXClient;
@@ -18,7 +18,7 @@ public class ProductLookupExample {
 	public static void main(String[] args) {
 
 		ApiClient apiClient = StockXClient
-				.create(ExampleConstants.AWS_API_KEY, Environment.SANDBOX);
+				.create(ExampleConstants.AWS_API_KEY, Environment.STAGING);
 
 		StockXApi api = new StockXApi(apiClient);
 		
@@ -33,8 +33,8 @@ public class ProductLookupExample {
 			String authToken = list.get(0);
 			apiClient.addDefaultHeader("jwt-authorization", authToken);
 
-			ProductLookupResponse lookupResp = api.lookupProduct("nike", "7");
-			System.out.println("Lookup result: " + lookupResp);
+			ProductInfo productInfo = api.lookupProduct("nike", "7");
+			System.out.println("Lookup result: " + productInfo);
 		} catch (ApiException e) {
 			e.printStackTrace();
 		}

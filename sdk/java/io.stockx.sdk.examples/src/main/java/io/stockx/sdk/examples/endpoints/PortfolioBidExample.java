@@ -1,4 +1,4 @@
-package io.stockx.sdk.examples;
+package io.stockx.sdk.examples.endpoints;
 
 import static io.stockx.sdk.examples.base.LoginUtil.login;
 
@@ -13,7 +13,7 @@ import io.stockx.sdk.examples.base.Environment;
 import io.stockx.sdk.examples.base.ExampleConstants;
 import io.stockx.sdk.examples.base.StockXClient;
 
-public class PortfolioAskExample {
+public class PortfolioBidExample {
 
 	public static void main(String[] args) {
 
@@ -30,22 +30,21 @@ public class PortfolioAskExample {
 															.amount("25")
 															.skuUuid("bae25b67-a721-4f57-ad5a-79973c7d0a5c")
 															.matchedWithDate("2018-12-12T05:00:00+0000")
-															.condition("2000")
-															.action(1000);
-
-			CustomerObject customer = new CustomerObject();
-				customer.setDefaultSize("7");
+															.expiresAt("2018-12-12T12:39:07+00:00");
+			
+			CustomerObject cust = new CustomerObject();
+				cust.setDefaultSize("7");
 			
 			PortfolioRequest request = new PortfolioRequest()
 											.portfolioItem(item)
-											.customer(customer)
+											.customer(cust)
 											.timezone("America/Detroit");
 			
-			PortfolioResponse askResp = api.newPortfolioAsk(request);
-			System.out.println("Ask Created: " + askResp);
+			PortfolioResponse bidResp = api.newPortfolioBid(request);
+			System.out.println("Bid Created: " + bidResp);
+			
 		} catch (ApiException e) {
-			System.out.println(e.getMessage());
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 

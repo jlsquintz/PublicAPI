@@ -8,7 +8,7 @@ require_once('JWTHeaderSelector.php');
 $client = new GuzzleHttp\Client();
 $config = Swagger\Client\Configuration::getDefaultConfiguration()
                 ->setApiKey('x-api-key', ExampleConstants::$AWS_API_KEY)
-                ->setHost(Environment::$ENDPOINT_SANDBOX);
+                ->setHost(Environment::$ENDPOINT_STAGING);
 
 $headerSelector = new JWTHeaderSelector();
 
@@ -19,11 +19,11 @@ $api = new Swagger\Client\Api\StockXApi(
     );
 
 try {
-    LoginUtil::login($api, $headerSelector,
+    $customer = LoginUtil::login($api, $headerSelector,
         ExampleConstants::$STOCKX_USERNAME,
         ExampleConstants::$STOCKX_PASSWORD);
-    
-    $currentSelling = $api->getCustomerCurrentSelling("1471698");
+
+    $currentSelling = $api->getOpenOrders($customer[0]["customer"]["id"]);
     
     print_r($currentSelling);
 } catch (Exception $e) {

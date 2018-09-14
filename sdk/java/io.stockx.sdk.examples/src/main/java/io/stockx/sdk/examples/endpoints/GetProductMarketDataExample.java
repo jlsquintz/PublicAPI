@@ -1,4 +1,4 @@
-package io.stockx.sdk.examples;
+package io.stockx.sdk.examples.endpoints;
 
 import static io.stockx.sdk.examples.base.LoginUtil.login;
 

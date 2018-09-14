@@ -8,7 +8,7 @@ require_once('JWTHeaderSelector.php');
 $client = new GuzzleHttp\Client();
 $config = Swagger\Client\Configuration::getDefaultConfiguration()
 ->setApiKey('x-api-key', ExampleConstants::$AWS_API_KEY)
-->setHost(Environment::$ENDPOINT_SANDBOX);
+->setHost(Environment::$ENDPOINT_STAGING);
 
 $headerSelector = new JWTHeaderSelector();
 

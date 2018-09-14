@@ -5,12 +5,13 @@ import java.util.List;
 import io.stockx.client.ApiException;
 import io.stockx.client.ApiResponse;
 import io.stockx.client.api.StockXApi;
+import io.stockx.client.model.CustomerObject;
 import io.stockx.client.model.LoginRequest;
 import io.stockx.client.model.LoginResponse;
 
 public class LoginUtil {
 
-	public static void login(StockXApi api, String username, String password) throws ApiException {
+	public static CustomerObject login(StockXApi api, String username, String password) throws ApiException {
 		LoginRequest loginReq = new LoginRequest()
 				.email(username)
 				.password(password);
@@ -21,6 +22,8 @@ public class LoginUtil {
 			
 			String authToken = list.get(0);
 			api.getApiClient().addDefaultHeader("jwt-authorization", authToken);
+			
+			return loginWithHttpInfo.getData().getCustomer();
 		} catch (ApiException e) {
 			throw e;
 		}

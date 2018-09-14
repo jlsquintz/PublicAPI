@@ -10,7 +10,7 @@
 		"https"
 	],
 	"paths": {
-		"/v1/products/{id}/market": {
+		"/v1/products/{productId}/market": {
 			"get": {
 				"summary" : "Provides historical market data for a given product.",
 				"operationId": "getProductMarketData",
@@ -42,7 +42,9 @@
 				"responses": {
 					"200": {
 						"description": "200 response",
-						"type": "string"
+						"schema": {
+							"$ref": "#/definitions/MarketData"
+						}
 					}
 				},
 				"security": [
@@ -543,7 +545,7 @@
 					"200": {
 						"description": "200 response",
 						"schema": {
-							"$ref": "#/definitions/product_lookup_response"
+							"$ref": "#/definitions/ProductInfo"
 						}
 					}
 				},
@@ -5351,6 +5353,297 @@
 				]
 			}
 		},
+		"ProductInfo": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "type": {
+                                "type": "string"
+                            },
+                            "id": {
+                                "type": "string"
+                            },
+                            "magento_id": {
+                                "type": "null"
+                            },
+                            "attributes": {
+                                "type": "object",
+                                "properties": {
+                                    "product_uuid": {
+                                        "type": "string"
+                                    },
+                                    "sku": {
+                                        "type": "string"
+                                    },
+                                    "traits": {
+                                        "type": "object",
+                                        "properties": {
+                                            "size": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "product": {
+                                "type": "object",
+                                "properties": {
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "attributes": {
+                                        "type": "object",
+                                        "properties": {
+                                            "product_category": {
+                                                "type": "string"
+                                            },
+                                            "url_key": {
+                                                "type": "string"
+                                            },
+                                            "slug": {
+                                                "type": "string"
+                                            },
+                                            "magento_id": {
+                                                "type": "null"
+                                            },
+                                            "brand": {
+                                                "type": "string"
+                                            },
+                                            "ticker": {
+                                                "type": "string"
+                                            },
+                                            "style_id": {
+                                                "type": "string"
+                                            },
+                                            "model": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "size_locale": {
+                                                "type": "string"
+                                            },
+                                            "size_title": {
+                                                "type": "string"
+                                            },
+                                            "size_descriptor": {
+                                                "type": "string"
+                                            },
+                                            "size_all_descriptor": {
+                                                "type": "string"
+                                            },
+                                            "gender": {
+                                                "type": "string"
+                                            },
+                                            "condition": {
+                                                "type": "string"
+                                            },
+                                            "us_hts_code": {
+                                                "type": "null"
+                                            },
+                                            "us_hts_description": {
+                                                "type": "null"
+                                            },
+                                            "minimum_bid": {
+                                                "type": "integer"
+                                            },
+                                            "uniq_bids": {
+                                                "type": "boolean"
+                                            },
+                                            "primary_category": {
+                                                "type": "string"
+                                            },
+                                            "secondary_category": {
+                                                "type": "string"
+                                            },
+                                            "algolia_tags": {
+                                                "type": "null"
+                                            },
+                                            "breadcrumbs": {
+                                                "type": "null"
+                                            }
+                                        }
+                                    },
+                                    "shipping": {
+                                        "type": "null"
+                                    }
+                                }
+                            },
+                            "hidden": {
+                                "type": "boolean"
+                            },
+                            "size_sort_order": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                },
+                "meta": {
+                    "type": "object",
+                    "properties": {
+                        "charity": {
+                            "type": "boolean"
+                        },
+                        "raffle": {
+                            "type": "boolean"
+                        },
+                        "mobile_only": {
+                            "type": "boolean"
+                        },
+                        "restock": {
+                            "type": "boolean"
+                        },
+                        "deleted": {
+                            "type": "boolean"
+                        },
+                        "hidden": {
+                            "type": "boolean"
+                        },
+                        "lock_buying": {
+                            "type": "boolean"
+                        },
+                        "lock_selling": {
+                            "type": "boolean"
+                        },
+                        "redirected": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "links": {
+                    "type": "null"
+                }
+            }
+        },
+        "MarketData": {
+            "type": "object",
+            "properties": {
+                "Market": {
+                    "type": "object",
+                    "properties": {
+                        "productId": {
+                            "type": "integer"
+                        },
+                        "skuUuid": {
+                            "type": "string"
+                        },
+                        "productUuid": {
+                            "type": "string"
+                        },
+                        "lowestAsk": {
+                            "type": "integer"
+                        },
+                        "lowestAskSize": {
+                            "type": "string"
+                        },
+                        "parentLowestAsk": {
+                            "type": "integer"
+                        },
+                        "numberOfAsks": {
+                            "type": "integer"
+                        },
+                        "salesThisPeriod": {
+                            "type": "integer"
+                        },
+                        "salesLastPeriod": {
+                            "type": "integer"
+                        },
+                        "highestBid": {
+                            "type": "integer"
+                        },
+                        "highestBidSize": {
+                            "type": "string"
+                        },
+                        "numberOfBids": {
+                            "type": "integer"
+                        },
+                        "annualHigh": {
+                            "type": "integer"
+                        },
+                        "annualLow": {
+                            "type": "integer"
+                        },
+                        "deadstockRangeLow": {
+                            "type": "integer"
+                        },
+                        "deadstockRangeHigh": {
+                            "type": "integer"
+                        },
+                        "volatility": {
+                            "type": "number"
+                        },
+                        "deadstockSold": {
+                            "type": "integer"
+                        },
+                        "pricePremium": {
+                            "type": "number"
+                        },
+                        "averageDeadstockPrice": {
+                            "type": "integer"
+                        },
+                        "lastSale": {
+                            "type": "integer"
+                        },
+                        "lastSaleSize": {
+                            "type": "string"
+                        },
+                        "salesLast72Hours": {
+                            "type": "integer"
+                        },
+                        "changeValue": {
+                            "type": "integer"
+                        },
+                        "changePercentage": {
+                            "type": "number"
+                        },
+                        "absChangePercentage": {
+                            "type": "number"
+                        },
+                        "totalDollars": {
+                            "type": "integer"
+                        },
+                        "updatedAt": {
+                            "type": "integer"
+                        },
+                        "lastLowestAskTime": {
+                            "type": "integer"
+                        },
+                        "lastHighestBidTime": {
+                            "type": "integer"
+                        },
+                        "lastSaleDate": {
+                            "type": "string"
+                        },
+                        "createdAt": {
+                            "type": "string"
+                        },
+                        "deadstockSoldRank": {
+                            "type": "integer"
+                        },
+                        "pricePremiumRank": {
+                            "type": "integer"
+                        },
+                        "averageDeadstockPriceRank": {
+                            "type": "integer"
+                        },
+                        "featured": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
 		"portfolioitems_id_get_response_PortfolioItem": {
 			"required": [
 				"Merchant",

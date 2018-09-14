@@ -11,6 +11,8 @@ class LoginUtil {
             $result = $api->loginWithHttpInfo($login);
             $jwtHeader = $result[2]["Jwt-Authorization"][0];
             $headerSelector->setToken($jwtHeader);
+            
+            return $result;
         } catch (Exception $e) {
             echo 'Exception when calling StockXApi->login: ', $e->getMessage(), PHP_EOL;
         }

@@ -1,4 +1,4 @@
-package io.stockx.sdk.examples;
+package io.stockx.sdk.examples.endpoints;
 
 import java.util.List;
 
