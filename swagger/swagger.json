@@ -12,6 +12,7 @@
 	"paths": {
 		"/v1/products/{id}/market": {
 			"get": {
+				"summary" : "Provides historical market data for a given product.",
 				"operationId": "getProductMarketData",
 				"consumes": [
 					"application/json"
@@ -54,6 +55,7 @@
 		},
 		"/v2/search": {
 			"get": {
+				"summary" : "Searches for products by keyword.",
 				"operationId": "search",
 				"consumes": [
 					"application/json"
@@ -69,7 +71,8 @@
 						"name": "query",
 						"in": "query",
 						"required": true,
-						"type": "string"
+						"type": "string",
+						"description" : "The phrase or keyword to search with."
 					}
 				],
 				"responses": {
@@ -90,6 +93,7 @@
 		},
 		"/v1/login": {
 			"post": {
+				"summary" : "Attempts to log the user in with a username and password.",
 				"operationId": "login",
 				"consumes": [
 					"application/json"
@@ -107,7 +111,8 @@
 						"required": true,
 						"schema": {
 							"$ref": "#/definitions/login_request"
-						}
+						},
+						"description" : "Object that contains the user's authentication credentials.'"
 					}
 				],
 				"responses": {
@@ -133,6 +138,7 @@
 		},
 		"/v1/portfolio": {
 			"post": {
+				"summary" :  "Returns a market portfolio identified by request parameters.",
 				"operationId": "getPortfolio",
 				"consumes": [
 					"application/json"
@@ -150,7 +156,8 @@
 						"required": true,
 						"schema": {
 							"$ref": "#/definitions/portfolio_request"
-						}
+						},
+						"description" : "Requests parameters for looking up a market portfolio." 
 					}
 				],
 				"responses": {
@@ -170,6 +177,7 @@
 		},
 		"/v1/portfolio/ask": {
 			"post": {
+				"summary" : "Creates a new seller ask on the market for a given product.",
 				"operationId": "newPortfolioAsk",
 				"consumes": [
 					"application/json"
@@ -187,7 +195,8 @@
 						"required": true,
 						"schema": {
 							"$ref": "#/definitions/portfolio_request"
-						}
+						},
+						"description" : "The portfolio request representing the ask to place on the market."
 					}
 				],
 				"responses": {
@@ -207,6 +216,7 @@
 		},
 		"/v1/portfolio/bid": {
 			"post": {
+				"summary" : "Creates a new buyer bid on the market for a given product.",
 				"operationId": "newPortfolioBid",
 				"consumes": [
 					"application/json"
@@ -224,7 +234,8 @@
 						"required": true,
 						"schema": {
 							"$ref": "#/definitions/portfolio_request"
-						}
+						},
+						"description" : "The portfolio request representing the bid to place on the market."
 					}
 				],
 				"responses": {
@@ -244,6 +255,7 @@
 		},
 		"/v1/portfolio/{id}": {
 			"delete": {
+				"summary" : "Deletes a portfolio item from the market with the specified id.",
 				"operationId": "deletePortfolio",
 				"consumes": [
 					"application/json"
@@ -259,7 +271,8 @@
 						"name": "id",
 						"in": "path",
 						"required": true,
-						"type": "string"
+						"type": "string",
+						"description" : "The id of the portfolio item to delete."
 					},
 					{
 						"in": "body",
@@ -267,7 +280,8 @@
 						"required": true,
 						"schema": {
 							"$ref": "#/definitions/portfolio_id_del_request"
-						}
+						},
+						"description" : "The request information for the portfolio delete operation."
 					}
 				],
 				"responses": {
@@ -430,6 +444,7 @@
 			}
 		},
 		"/v1/portfolioitems/{id}": {
+			"summary" : "Returns a portfolio item with the given id.",
 			"get": {
 				"operationId": "getPortfolioItem",
 				"produces": [
@@ -443,7 +458,8 @@
 						"name": "id",
 						"in": "path",
 						"required": true,
-						"type": "string"
+						"type": "string",
+						"description" : "The id of the portfolio item to lookup."
 					}
 				],
 				"responses": {
@@ -463,6 +479,7 @@
 			}
 		},
 		"/v1/customers/{id}/selling/current": {
+			"summary" : "Returns the items being offered for sale from the specified customer id.",
 			"get": {
 				"operationId": "getOpenOrders",
 				"produces": [
@@ -476,7 +493,8 @@
 						"name": "id",
 						"in": "path",
 						"required": true,
-						"type": "string"
+						"type": "string",
+						"description" : "The customer id to lookup open orders with."
 					}
 				],
 				"responses": {
@@ -496,6 +514,7 @@
 			}
 		},
 		"/product/lookup": {
+			"summary" : "Looks up product information based on identifier and size.",
 			"get": {
 				"operationId": "lookupProduct",
 				"produces": [
@@ -509,13 +528,15 @@
 						"name": "identifier",
 						"in": "query",
 						"required": false,
-						"type": "string"
+						"type": "string",
+						"description" : "The product identifier to lookup, e.g. (air-jordan-1-retro-high-off-white-chicago)"
 					},
 					{
 						"name": "size",
 						"in": "query",
 						"required": false,
-						"type": "string"
+						"type": "string",
+						"description" : "The size of the product."
 					}
 				],
 				"responses": {
@@ -535,6 +556,7 @@
 			}
 		},
 		"/v1/products/{id}": {
+			"summary" : "Returns product information based on product id.",
 			"get": {
 				"operationId": "getProductById",
 				"produces": [
@@ -548,7 +570,8 @@
 						"name": "id",
 						"in": "path",
 						"required": true,
-						"type": "string"
+						"type": "string",
+						"description" : "The id of the product to return."
 					},
 					{
 						"name": "include",
