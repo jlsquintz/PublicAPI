@@ -1,7 +1,5 @@
-examples/place_new_lowest_ask/node_modules
-examples/place_new_lowest_ask/package-lock.json
-examples/get_current_orders/package-lock.json
-examples/get_current_orders/node_modules
+**/node_modules
+**/package-lock.json
 
 .env
 /.DS_Store

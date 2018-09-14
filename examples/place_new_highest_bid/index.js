@@ -8,7 +8,7 @@ const ENV =       'stage'; // Options: 'sandbox', 'stage', 'public'
 
 const URL = `https://gateway.stockx.com/${ENV}`;
 
-class ProductAsk {
+class ProductBid {
   run() {
     this._login().then(loginData => {
       // Login and set the jwt for authorization.
@@ -29,15 +29,15 @@ class ProductAsk {
       return this._getProductPriceData(product.attributes.product_uuid, product.id)
 
     }).then(data => {
-      // Grab the lowest ask and subtract a dollar from it.
-      const lowestAsk = data.Market.lowestAsk - 1;
+      // Grab the highest bid and add a dollar to it.
+      const highestBid = data.Market.highestBid + 1;
 
-      // Place the new lowest ask. Date must be in the future.
-      return this._placeAsk(data.Market.skuUuid, '2018-12-12T12:39:07+00:00', lowestAsk);
+      // Place the new highest bid.
+      return this._placeBid(data.Market.skuUuid, '2018-12-12T12:39:07+00:00', highestBid);
 
     }).then(data => {
       // Log for success.
-      console.log('Successfully placed the ask');
+      console.log('Successfully placed the bid');
 
     }).catch(err => {
       // Log for error.
@@ -111,11 +111,11 @@ class ProductAsk {
     });
   }
 
-  // The product's sku is required to place an ask. This is the unique id of the sneaker + size. You can get this via product data call.
-  _placeAsk(sku, expiresAt, amount) {
+  // The product's sku is required to place a bid. This is the unique id of the product and style. You can get this via product data call.
+  _placeBid(sku, expiresAt, amount) {
     return new Promise((resolve, reject) => {
       superagent
-        .post(`${URL}/v1/portfolio/ask`)
+        .post(`${URL}/v1/portfolio/bid`)
         .set('x-api-key', API_KEY)
         .set('jwt-authorization', this.jwt)
         .send({
@@ -134,9 +134,10 @@ class ProductAsk {
         });
     });
   }
+
 }
 
-const productAsk = new ProductAsk();
+const productBid = new ProductBid();
 
-productAsk.run();
+productBid.run();
 
