@@ -4,7 +4,7 @@ const superagent = require('superagent');
 const API_KEY =   'API_Key_Given_By_StockX_Engineering';
 const EMAIL =     'Email_Address';
 const PASSWORD =  'Password';
-const ENV =       'stage'; // Options: 'sandbox', 'stage', 'public'
+const ENV =       'public'; // Options: 'sandbox', 'stage', 'public'
 
 const URL = `https://gateway.stockx.com/${ENV}`;
 
