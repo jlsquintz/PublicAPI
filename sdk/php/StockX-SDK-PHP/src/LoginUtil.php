@@ -3,7 +3,7 @@
 class LoginUtil {
     
     public static function login($api, $headerSelector, $username, $password) {
-        $login = new \Swagger\Client\Model\LoginRequest();
+        $login = new \StockX\Client\Model\LoginRequest();
         $login->setEmail($username);
         $login->setPassword($password);
         

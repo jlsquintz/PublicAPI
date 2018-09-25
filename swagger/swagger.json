@@ -1,8 +1,9 @@
 {
 	"swagger": "2.0",
 	"info": {
-		"version": "final32218.2",
-		"title": "StockX API"
+		"version": "1.0.0",
+		"title": "StockX API", 
+		"description": "PRERELEASE API - Subject to change before release. Provides access to StockX's public services, allowing end users to query for product and order information."
 	},
 	"host": "gateway.stockx.com",
 	"basePath": "/public",

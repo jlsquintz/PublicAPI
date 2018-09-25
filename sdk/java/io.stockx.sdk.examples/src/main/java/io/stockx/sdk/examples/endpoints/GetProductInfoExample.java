@@ -11,28 +11,30 @@ import io.stockx.sdk.examples.base.ExampleConstants;
 import io.stockx.sdk.examples.base.StockXClient;
 
 /**
- * <p>Demonstrates retrieving information about a StockX product.</p>
+ * <p>
+ * Demonstrates retrieving information about a StockX product.
+ * </p>
  */
 public class GetProductInfoExample {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		ApiClient apiClient = StockXClient
-				.create(ExampleConstants.AWS_API_KEY, Environment.STAGING);
+        ApiClient apiClient = StockXClient
+                    .create(ExampleConstants.AWS_API_KEY, Environment.STAGING);
 
-		StockXApi api = new StockXApi(apiClient);
-		
-		try {
-			// Login to the StockX framework - see LoginExample for how this works
-			login(api, ExampleConstants.STOCKX_USERNAME, ExampleConstants.STOCKX_PASSWORD);
-			
-			// Lookup the supplied product by its product ID
-			ProductResponse productById = api.getProductById(ExampleConstants.DEMO_PRODUCT_ID, null);
-			
-			System.out.println("Product Info: " + productById.getProduct());
-		} catch (ApiException e) {
-			e.printStackTrace();
-		}
-	}
+        StockXApi stockx = new StockXApi(apiClient);
+
+        try {
+            // Login to the StockX framework - see LoginExample for how this works
+            login(stockx, ExampleConstants.STOCKX_USERNAME, ExampleConstants.STOCKX_PASSWORD);
+
+            // Lookup the supplied product by its product ID
+            ProductResponse productById = stockx.getProductById(ExampleConstants.DEMO_PRODUCT_ID, null);
+
+            System.out.println("Product Info: " + productById.getProduct());
+        } catch (ApiException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

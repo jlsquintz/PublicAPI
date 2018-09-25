@@ -8,7 +8,7 @@
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class JWTHeaderSelector extends Swagger\Client\HeaderSelector
+class JWTHeaderSelector extends StockX\Client\HeaderSelector
 {
 
     protected $token;

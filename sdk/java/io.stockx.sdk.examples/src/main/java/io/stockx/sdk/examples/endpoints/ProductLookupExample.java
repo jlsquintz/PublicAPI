@@ -13,31 +13,35 @@ import io.stockx.sdk.examples.base.Environment;
 import io.stockx.sdk.examples.base.ExampleConstants;
 import io.stockx.sdk.examples.base.StockXClient;
 
+/**
+ * <p>
+ * Demonstrates looking up a specific product on the market.
+ * </p>
+ */
 public class ProductLookupExample {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		ApiClient apiClient = StockXClient
-				.create(ExampleConstants.AWS_API_KEY, Environment.STAGING);
+        ApiClient apiClient = StockXClient.create(ExampleConstants.AWS_API_KEY, Environment.STAGING);
 
-		StockXApi api = new StockXApi(apiClient);
-		
-		LoginRequest loginReq = new LoginRequest()
-							.email(ExampleConstants.STOCKX_USERNAME)
-							.password(ExampleConstants.STOCKX_PASSWORD);
-		
-		try {
-			ApiResponse<LoginResponse> loginWithHttpInfo = api.loginWithHttpInfo(loginReq);
-			List<String> list = loginWithHttpInfo.getHeaders().get(ExampleConstants.JWT_HEADER);
+        StockXApi stockx = new StockXApi(apiClient);
 
-			String authToken = list.get(0);
-			apiClient.addDefaultHeader("jwt-authorization", authToken);
+        LoginRequest loginReq = new LoginRequest()
+                        .email(ExampleConstants.STOCKX_USERNAME)
+                       .password(ExampleConstants.STOCKX_PASSWORD);
 
-			ProductInfo productInfo = api.lookupProduct("nike", "7");
-			System.out.println("Lookup result: " + productInfo);
-		} catch (ApiException e) {
-			e.printStackTrace();
-		}
-	}
+        try {
+            ApiResponse<LoginResponse> loginWithHttpInfo = stockx.loginWithHttpInfo(loginReq);
+            List<String> list = loginWithHttpInfo.getHeaders().get(ExampleConstants.JWT_HEADER);
+
+            String authToken = list.get(0);
+            apiClient.addDefaultHeader("jwt-authorization", authToken);
+
+            ProductInfo productInfo = stockx.lookupProduct("nike", "7");
+            System.out.println("Lookup result: " + productInfo);
+        } catch (ApiException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
