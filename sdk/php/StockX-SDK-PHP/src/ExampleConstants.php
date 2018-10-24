@@ -6,7 +6,7 @@
 class ExampleConstants {
     
     /** The AWS API key provided by StockX to access StockX APIs. */
-    public static $AWS_API_KEY = "<API KEY>";
+    public static $AWS_API_KEY = "<API Key>";
     
     /** The StockX account username to authenticate with. */
     public static $STOCKX_USERNAME = "<StockX Username>";
@@ -18,10 +18,10 @@ class ExampleConstants {
     public static $DEMO_PRODUCT_ID = "air-jordan-1-retro-high-off-white-chicago";
     
     /** The custoner ID to lookup orders for. */
-    public static $DEMO_CUSTOMER_ID = "<customer id>";
+    public static $DEMO_CUSTOMER_ID = "1471698";
     
     /** Whether to output debug information to console. */
-    public static $ENABLE_DEBUG = true;
+    public static $ENABLE_DEBUG = false;
     
     /** JWT bearer token header name. */
     public static $JWT_HEADER = "Jwt-Authorization";

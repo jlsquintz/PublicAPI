@@ -1,0 +1,14 @@
+{
+  "name": "io_stockx_sdk_examples",
+  "version": "1.0.0",
+  "description": "Examples for accessing StockX's public API from javascript and node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "stock_x_api": "1.0.0"
+  }
+}

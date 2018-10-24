@@ -1,6 +1,8 @@
 {
-    "modelPackage" : "StockX",
-    "apiPackage" : "StockX",
+    "modelPackage" : "Model",
+    "apiPackage" : "Api",
     "invokerPackage" : "StockX\\Client",
-    "packagePath" : "StockXClient"
+    "packagePath" : "StockXClient",
+    "gitUserId" : "stockx",
+    "gitRepoId" : "PublicAPI"
 }

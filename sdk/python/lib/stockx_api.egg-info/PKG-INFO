@@ -1,0 +1,12 @@
+Metadata-Version: 1.0
+Name: stockx-api
+Version: 0.0.1
+Summary: StockX API
+Home-page: UNKNOWN
+Author: UNKNOWN
+Author-email: UNKNOWN
+License: UNKNOWN
+Description:     PRERELEASE API - Subject to change before release. Provides access to StockX&#39;s public services, allowing end users to query for product and order information.  # noqa: E501
+            
+Keywords: Swagger,StockX API
+Platform: UNKNOWN

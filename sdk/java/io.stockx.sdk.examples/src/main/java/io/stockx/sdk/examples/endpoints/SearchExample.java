@@ -11,28 +11,29 @@ import io.stockx.sdk.examples.base.ExampleConstants;
 import io.stockx.sdk.examples.base.StockXClient;
 
 /**
- * <p>Demonstrates retrieving information about a StockX product.</p>
+ * <p>
+ * Demonstrates retrieving information StockX products from a general query.
+ * </p>
  */
 public class SearchExample {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		ApiClient apiClient = StockXClient
-				.create(ExampleConstants.AWS_API_KEY, Environment.STAGING, true);
+        ApiClient apiClient = StockXClient.create(ExampleConstants.AWS_API_KEY, Environment.STAGING, true);
 
-		StockXApi api = new StockXApi(apiClient);
-		
-		try {
-			// Login to the StockX framework - see LoginExample for how this works
-			login(api, ExampleConstants.STOCKX_USERNAME, ExampleConstants.STOCKX_PASSWORD);
-			
-			// Lookup the supplied product by its product ID
-			SearchResults res = api.search("yeezy");
-			
-			System.out.println("Search result: " + res);
-		} catch (ApiException e) {
-			e.printStackTrace();
-		}
-	}
+        StockXApi stockx = new StockXApi(apiClient);
+
+        try {
+            // Login to the StockX framework - see LoginExample for how this works
+            login(stockx, ExampleConstants.STOCKX_USERNAME, ExampleConstants.STOCKX_PASSWORD);
+
+            // Lookup the supplied product by its product ID
+            SearchResults res = stockx.search("yeezy");
+
+            System.out.println("Search result: " + res);
+        } catch (ApiException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

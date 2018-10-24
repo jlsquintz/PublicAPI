@@ -15,37 +15,37 @@ import io.stockx.sdk.examples.base.StockXClient;
 
 public class PortfolioAskExample {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		ApiClient apiClient = StockXClient
-				.create(ExampleConstants.AWS_API_KEY, Environment.STAGING, true);
+        ApiClient apiClient = StockXClient.create(ExampleConstants.AWS_API_KEY, Environment.STAGING, true);
 
-		StockXApi api = new StockXApi(apiClient);
-		
-		try {
-			// Login to the StockX framework - see LoginExample for how this works
-			login(api, ExampleConstants.STOCKX_USERNAME, ExampleConstants.STOCKX_PASSWORD);
-			
-			PortfolioRequestPortfolioItem item = new PortfolioRequestPortfolioItem()
-															.amount("25")
-															.skuUuid("bae25b67-a721-4f57-ad5a-79973c7d0a5c")
-															.matchedWithDate("2018-12-12T05:00:00+0000")
-															.expiresAt("2018-12-12T12:39:07+00:00");
+        StockXApi stockx = new StockXApi(apiClient);
 
-			CustomerObject customer = new CustomerObject();
-				customer.setDefaultSize("7");
-			
-			PortfolioRequest request = new PortfolioRequest()
-											.portfolioItem(item)
-											.customer(customer)
-											.timezone("America/Detroit");
-			
-			PortfolioResponse askResp = api.newPortfolioAsk(request);
-			System.out.println("Ask Created: " + askResp);
-		} catch (ApiException e) {
-			System.out.println(e.getMessage());
-			//e.printStackTrace();
-		}
-	}
+        try {
+            // Login to the StockX framework - see LoginExample for how this works
+            login(stockx, ExampleConstants.STOCKX_USERNAME, ExampleConstants.STOCKX_PASSWORD);
+
+            PortfolioRequestPortfolioItem item = new PortfolioRequestPortfolioItem()
+                            .amount("25")
+                            .skuUuid("bae25b67-a721-4f57-ad5a-79973c7d0a5c")
+                            .matchedWithDate("2018-12-12T05:00:00+0000")
+                            .expiresAt("2018-12-12T12:39:07+00:00");
+
+            CustomerObject customer = new CustomerObject();
+                customer.setDefaultSize("7");
+
+            PortfolioRequest request = new PortfolioRequest()
+                            .portfolioItem(item)
+                            .customer(customer)
+                            .timezone("America/Detroit");
+
+            PortfolioResponse askResp = stockx.newPortfolioAsk(request);
+
+            System.out.println("Ask Created: " + askResp);
+        } catch (ApiException e) {
+            System.out.println(e.getMessage());
+            // e.printStackTrace();
+        }
+    }
 
 }
